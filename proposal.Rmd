@@ -5,8 +5,6 @@ date: "11/16/2022"
 output: html_document
 ---
 
-
-
 ### Background
 
 Ad fraud (or Click Fraud) is concerned with fraudulently representing online advertisement impressions, clicks, conversion, or data events for financial gain. Ad fraud attempt to deceive advertising platforms that fake activity on the network is actual user behavior. App install fraud is one type of ad fraud that may cause high financial exposure. To deal with the problem, we are planning to detect the fack install from the installation records in this project.
@@ -14,7 +12,7 @@ Ad fraud (or Click Fraud) is concerned with fraudulently representing online adv
 ### Task
 Our task is to predict whether a user will download an app after clicking a mobile app advertisement.
 
-### Data
+### Data Description
 
 ##### There 4 files in this data which contain 200 million click records over 4 days:
 
@@ -47,11 +45,14 @@ is_attributed: the target that is to be predicted, indicating the app was downlo
 
 
 ### Method
-1. We are going to build the prediction model based on ..
+1. Data-preprocessing.
 
-2.
+2. Predictive Modeling with regression model,SVM,  k-Nearest-Neighbor,  random forest, xgboost method on train data.
 
-3.
+3. evaluate model performances on test data.
+
+4. extract patterns from data and analyse Ad fraud behaviour.
+
 
 ### Updated Project Information
 https://github.com/amandazhao2022/STAT605_Project

@@ -11,7 +11,6 @@
 
 <meta name="author" content="Group3" />
 
-<meta name="date" content="2022-11-16" />
 
 <title>Proposal</title>
 
@@ -167,40 +166,22 @@ pre code {
 
 <h1 class="title toc-ignore">Proposal</h1>
 <h4 class="author">Group3</h4>
-<h4 class="date">11/16/2022</h4>
 
 </div>
 
 
-<div id="background" class="section level3">
-<h3>Background</h3>
-<p>Ad fraud (or Click Fraud) is concerned with fraudulently representing online advertisement impressions, clicks, conversion, or data events for financial gain. Ad fraud attempt to deceive advertising platforms that fake activity on the network is actual user behavior. App install fraud is one type of ad fraud that may cause high financial exposure. To deal with the problem, we are planning to detect the fack install from the installation records in this project.</p>
+<div id="background" class="section level4">
+<h4>Background</h4>
+<p>Ad fraud is concerned with attemption to deceive advertising platforms that fake activity on the network is actual user behavior for financial gain.. App install fraud is one type of ad fraud that may cause high financial exposure. In this project, we are planning to detect the fake install from the records.</p>
 </div>
-<div id="task" class="section level3">
-<h3>Task</h3>
+<div id="task" class="section level4">
+<h4>Task</h4>
 <p>Our task is to predict whether a user will download an app after clicking a mobile app advertisement.</p>
 </div>
-<div id="data" class="section level3">
-<h3>Data</h3>
-<div id="read-data" class="section level5">
-<h5>Read Data</h5>
+<div id="data" class="section level4">
+<h4>Data</h4>
 <pre class="r"><code>sampledata &lt;- read.csv(file = &#39;train_sample.csv&#39;)
-head(sampledata)</code></pre>
-<pre><code>##       ip app device os channel          click_time attributed_time
-## 1  87540  12      1 13     497 2017-11-07 09:30:38                
-## 2 105560  25      1 17     259 2017-11-07 13:40:27                
-## 3 101424  12      1 19     212 2017-11-07 18:05:24                
-## 4  94584  13      1 13     477 2017-11-07 04:58:08                
-## 5  68413  12      1  1     178 2017-11-09 09:00:09                
-## 6  93663   3      1 17     115 2017-11-09 01:22:13                
-##   is_attributed
-## 1             0
-## 2             0
-## 3             0
-## 4             0
-## 5             0
-## 6             0</code></pre>
-</div>
+#head(sampledata)</code></pre>
 <div id="variable-description" class="section level5">
 <h5>Variable Description</h5>
 <p>ip: ip address of click.</p>
@@ -209,16 +190,16 @@ head(sampledata)</code></pre>
 <p>os: os version id of user mobile phone</p>
 <p>channel: channel id of mobile ad publisher</p>
 <p>click_time: timestamp of click (UTC)</p>
-<p>attributed_time: if the user downloads the app after clicking an ad, this is the time of the app download</p>
+<p>attributed_time: the time of the app download if the user downloads the app after clicking an ad</p>
 <p>is_attributed: the target that is to be predicted, indicating the app was downloaded</p>
 </div>
 </div>
-<div id="statistical-methods" class="section level3">
-<h3>Statistical Methods</h3>
+<div id="statistical-methods" class="section level4">
+<h4>Statistical Methods</h4>
 <p>We are going to summarize the feature of variables based on the descriptive statistics(such as mean and median), then construct models including regression model,support vector machines, k-Nearest-Neighbor, random forest, xgboost methods on this data.</p>
 </div>
-<div id="computational-steps" class="section level3">
-<h3>Computational Steps</h3>
+<div id="computational-steps" class="section level4">
+<h4>Computational Steps</h4>
 <ol style="list-style-type: decimal">
 <li><p>Data preprocessing on the raw data, including date data transformation, handling imbalance data.</p></li>
 <li><p>Exploratory data analysis with visualization.</p></li>
@@ -226,8 +207,8 @@ head(sampledata)</code></pre>
 <li><p>Evaluate and compare the performance of models.</p></li>
 </ol>
 </div>
-<div id="github-repository" class="section level3">
-<h3>Github repository</h3>
+<div id="github-repository" class="section level4">
+<h4>Github repository</h4>
 <p><a href="https://github.com/amandazhao2022/STAT605_Project" class="uri">https://github.com/amandazhao2022/STAT605_Project</a></p>
 </div>
 

@@ -1,23 +1,20 @@
 ---
 title: "Proposal"
 author: "Group3"
-date: "11/16/2022"
 output: html_document
 ---
 
-### Background
+#### Background
 
-Ad fraud (or Click Fraud) is concerned with fraudulently representing online advertisement impressions, clicks, conversion, or data events for financial gain. Ad fraud attempt to deceive advertising platforms that fake activity on the network is actual user behavior. App install fraud is one type of ad fraud that may cause high financial exposure. To deal with the problem, we are planning to detect the fack install from the installation records in this project.
+Ad fraud  is concerned with attemption to deceive advertising platforms that fake activity on the network is actual user behavior for financial gain.. App install fraud is one type of ad fraud that may cause high financial exposure. In this project, we are planning to detect the fake install from the records.
 
-### Task
+#### Task
 Our task is to predict whether a user will download an app after clicking a mobile app advertisement.
 
-### Data
-
-##### Read Data
+#### Data
 ```{r}
 sampledata <- read.csv(file = 'train_sample.csv')
-head(sampledata)
+#head(sampledata)
 ```
 
 
@@ -35,16 +32,16 @@ channel: channel id of mobile ad publisher
 
 click_time: timestamp of click (UTC) 
 
-attributed_time: if the user downloads the app after clicking an ad, this is the time of the app download 
+attributed_time: the time of the app download if the user downloads the app after clicking an ad
 
 is_attributed: the target that is to be predicted, indicating the app was downloaded
 
 
-### Statistical Methods
+#### Statistical Methods
 
 We are going to summarize the feature of variables based on the descriptive statistics(such as mean and median), then construct models including regression model,support vector machines,  k-Nearest-Neighbor,  random forest, xgboost methods on this data.
 
-### Computational Steps
+#### Computational Steps
 
 1. Data preprocessing on the raw data, including date data transformation, handling imbalance data.
 
@@ -55,7 +52,7 @@ We are going to summarize the feature of variables based on the descriptive stat
 4. Evaluate and compare the performance of models.
 
 
-### Github repository
+#### Github repository
 https://github.com/amandazhao2022/STAT605_Project
 
 

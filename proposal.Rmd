@@ -12,20 +12,16 @@ Ad fraud (or Click Fraud) is concerned with fraudulently representing online adv
 ### Task
 Our task is to predict whether a user will download an app after clicking a mobile app advertisement.
 
-### Data Description
+### Data
 
-##### There 4 files in this data which contain 200 million click records over 4 days:
-
-train.csv - the training set
-
-train_sample.csv - 100,000 randomly-selected rows of training data, to inspect data before downloading the full set 
-
-test.csv - the test set 
-
-test_supplement.csv - This is a larger test set
+##### Read Data
+```{r}
+sampledata <- read.csv(file = 'train_sample.csv')
+head(sampledata)
+```
 
 
-##### Each row of data contains a click record with 8 features:
+##### Variable Description
 
 ip: ip address of click.
 
@@ -44,17 +40,22 @@ attributed_time: if the user downloads the app after clicking an ad, this is the
 is_attributed: the target that is to be predicted, indicating the app was downloaded
 
 
-### Method
-1. Data-preprocessing.
+### Statistical Methods
 
-2. Predictive Modeling with regression model,SVM,  k-Nearest-Neighbor,  random forest, xgboost method on train data.
+We are going to summarize the feature of variables based on the descriptive statistics(such as mean and median), then construct models including regression model,support vector machines,  k-Nearest-Neighbor,  random forest, xgboost methods on this data.
 
-3. evaluate model performances on test data.
+### Computational Steps
 
-4. extract patterns from data and analyse Ad fraud behaviour.
+1. Data preprocessing on the raw data, including date data transformation, handling imbalance data.
+
+2. Exploratory data analysis with visualization.
+
+3. Modeling on the training data.
+
+4. Evaluate and compare the performance of models.
 
 
-### Updated Project Information
+### Github repository
 https://github.com/amandazhao2022/STAT605_Project
 
 

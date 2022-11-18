@@ -180,17 +180,29 @@ pre code {
 <h3>Task</h3>
 <p>Our task is to predict whether a user will download an app after clicking a mobile app advertisement.</p>
 </div>
-<div id="data-description" class="section level3">
-<h3>Data Description</h3>
-<div id="there-4-files-in-this-data-which-contain-200-million-click-records-over-4-days" class="section level5">
-<h5>There 4 files in this data which contain 200 million click records over 4 days:</h5>
-<p>train.csv - the training set</p>
-<p>train_sample.csv - 100,000 randomly-selected rows of training data, to inspect data before downloading the full set</p>
-<p>test.csv - the test set</p>
-<p>test_supplement.csv - This is a larger test set</p>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<div id="read-data" class="section level5">
+<h5>Read Data</h5>
+<pre class="r"><code>sampledata &lt;- read.csv(file = &#39;train_sample.csv&#39;)
+head(sampledata)</code></pre>
+<pre><code>##       ip app device os channel          click_time attributed_time
+## 1  87540  12      1 13     497 2017-11-07 09:30:38                
+## 2 105560  25      1 17     259 2017-11-07 13:40:27                
+## 3 101424  12      1 19     212 2017-11-07 18:05:24                
+## 4  94584  13      1 13     477 2017-11-07 04:58:08                
+## 5  68413  12      1  1     178 2017-11-09 09:00:09                
+## 6  93663   3      1 17     115 2017-11-09 01:22:13                
+##   is_attributed
+## 1             0
+## 2             0
+## 3             0
+## 4             0
+## 5             0
+## 6             0</code></pre>
 </div>
-<div id="each-row-of-data-contains-a-click-record-with-8-features" class="section level5">
-<h5>Each row of data contains a click record with 8 features:</h5>
+<div id="variable-description" class="section level5">
+<h5>Variable Description</h5>
 <p>ip: ip address of click.</p>
 <p>app: app id for marketing.</p>
 <p>device: device : id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.)</p>
@@ -201,17 +213,21 @@ pre code {
 <p>is_attributed: the target that is to be predicted, indicating the app was downloaded</p>
 </div>
 </div>
-<div id="method" class="section level3">
-<h3>Method</h3>
+<div id="statistical-methods" class="section level3">
+<h3>Statistical Methods</h3>
+<p>We are going to summarize the feature of variables based on the descriptive statistics(such as mean and median), then construct models including regression model,support vector machines, k-Nearest-Neighbor, random forest, xgboost methods on this data.</p>
+</div>
+<div id="computational-steps" class="section level3">
+<h3>Computational Steps</h3>
 <ol style="list-style-type: decimal">
-<li><p>Data-preprocessing.</p></li>
-<li><p>Predictive Modeling with regression model,SVM, k-Nearest-Neighbor, random forest, xgboost method on train data.</p></li>
-<li><p>evaluate model performances on test data.</p></li>
-<li><p>extract patterns from data and analyse Ad fraud behaviour.</p></li>
+<li><p>Data preprocessing on the raw data, including date data transformation, handling imbalance data.</p></li>
+<li><p>Exploratory data analysis with visualization.</p></li>
+<li><p>Modeling on the training data.</p></li>
+<li><p>Evaluate and compare the performance of models.</p></li>
 </ol>
 </div>
-<div id="updated-project-information" class="section level3">
-<h3>Updated Project Information</h3>
+<div id="github-repository" class="section level3">
+<h3>Github repository</h3>
 <p><a href="https://github.com/amandazhao2022/STAT605_Project" class="uri">https://github.com/amandazhao2022/STAT605_Project</a></p>
 </div>
 

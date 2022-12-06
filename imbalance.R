@@ -1,15 +1,16 @@
 library(ggplot2)
-library(ROSE)
 library(randomForest)
 library(caret)
 library(e1071)
+#install.packages("imbalanced-learn")
+#library(imbalanced-learn)
 
 rm(list=ls())
 #library(smotefamily)#SMOTE Balancing
 #rm(list=ls())
 dir=getwd()
-setwd(dir)
-#setwd("/Users/wanxintu/Documents/GitHub/STAT605_Project")
+#setwd(dir)
+setwd("/Users/wanxintu/Documents/GitHub/STAT605_Project")
 mydata <- read.csv('train_sample.csv')
 
 #feature
@@ -43,16 +44,26 @@ p8=ggplot(mydata,aes(x=ip,fill=is_attributed))+
   xlab("Ip Adresss of click") +
   labs(fill = "is_attributed")  
 
-#data banlancing
+#data balancing
+## check imbalance
+table(mydata$is_attributed)
+
 barplot(prop.table(table(mydata$is_attributed)),
         col = rainbow(2),
         ylim = c(0, 1),
         main = "is_attribute Distribution")
-##over sampling
+
+## over sampling 把数据变成1:1
 over <- ovun.sample(is_attributed~., data = mydata, method = "over")$data
 table(over$is_attributed)
 
-#smote balancing
-#smote_data = SMOTE(is_attributed ~ ., data  = mydata)                         
- 
+## both sampling (over & under)
+both <- ovun.sample(is_attributed~., data=mydata, method = "both")$data
+table(both$is_attributed)
+
+### random forest using both data
+##rfboth <-randomForest(is_attributed~., data=both)
+# 下面这里的数据应该用 testdata 
+##confusionMatrix(predict(rfboth, mydata), mydata$is_attributed, positive = '1')
+
 

@@ -4,14 +4,14 @@ author: "Group3"
 output: html_document
 ---
 
-#### Background
+### Background
 
-Ad fraud  is concerned with attemption to deceive advertising platforms that fake activity on the network is actual user behavior for financial gain.. App install fraud is one type of ad fraud that may cause high financial exposure. In this project, we are planning to detect the fake install from the records.
+Ad fraud  is concerned with attemption to deceive advertising platforms that fake activity on the network is actual user behavior for financial gain. App install fraud is one type of ad fraud that may cause high financial exposure. In this project, we are planning to detect the fake install from the records.
 
-#### Task
+### Task
 Our task is to predict whether a user will download an app after clicking a mobile app advertisement.
 
-#### Data
+### Data
 ```{r}
 sampledata <- read.csv(file = 'train_sample.csv')
 #head(sampledata)
@@ -24,7 +24,7 @@ ip: ip address of click.
 
 app: app id for marketing.
 
-device: device :  id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.) 
+device: device id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.) 
 
 os: os version id of user mobile phone 
 
@@ -37,11 +37,11 @@ attributed_time: the time of the app download if the user downloads the app afte
 is_attributed: the target that is to be predicted, indicating the app was downloaded
 
 
-#### Statistical Methods
+### Statistical Methods
 
 We are going to summarize the feature of variables based on the descriptive statistics(such as mean and median), then construct models including regression model,support vector machines,  k-Nearest-Neighbor,  random forest, xgboost methods on this data.
 
-#### Computational Steps
+### Computational Steps
 
 1. Data preprocessing on the raw data, including date data transformation, handling imbalance data.
 
@@ -52,7 +52,7 @@ We are going to summarize the feature of variables based on the descriptive stat
 4. Evaluate and compare the performance of models.
 
 
-#### Github repository
+#### Github Repository
 https://github.com/amandazhao2022/STAT605_Project
 
 

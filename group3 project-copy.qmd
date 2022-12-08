@@ -1,0 +1,80 @@
+---
+title: "Ad Fraud Detection: A Model Comparison Perspective"
+author: Group3 - Daniel Ye, David Gao, Wanxin Tu, Yujie Zhao, Zihan Tang
+format: html
+editor: visual
+---
+
+Github repository：https://github.com/amandazhao2022/STAT605_Project
+
+## Introduction
+
+Fraud risk is everywhere, but ad fraud can happen at an overwhelming volume for companies that advertise online, resulting in misleading click data and wasted money. Ad fraud is defined as any attempt to defraud digital advertising networks for financial gain. Scammers often use bots to create fake clicks, tricking advertisers into paying them. To help better detect and prevent ad fraud, we test and compare the accuracy, precision, and recall of four prediction models. Our findings conclude that Random Forests is the best model and is suggested to use when developing blacklists against ad frauds.
+
+## Data Overview
+
+The dataset comes from Kaggle and consists of 200 million clicking observations.
+
+![Sample Data](https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/691670476291_.pic.jpg){width="550"}
+
+There are 6 variables in each record:
+
+-   IP: IP address of click
+
+-   app: app id for marketing
+
+-   device: device: id of user mobile phone (e.g., iPhone 6, Huawei mate, etc.)
+
+-   os: os version id of user mobile phone
+
+-   channel: channel id of mobile ad publisher
+
+-   is_attributed: the target that is to be predicted, indicating the app was downloaded
+
+In a preliminary look at the data, we found the binary variable "is_attribute" has a skewed class proportion. As shown below, only a small proportion (less than 0.2%) of clicks were followed by a download, which indicates an imbalanced feature.
+
+![Imbalanced Class](https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/671670476291_.pic.jpg){width="550"}
+
+## Data Preprocessing
+
+To solve the imbalance feature, oversampling and undersampling are performed on the whole training file. Oversampling randomly duplicates observations from the minority class (value 1), setting the number of samples to match that of the majority class (value 0). Undersampling involves randomly removing observations from the majority and setting the number of samples to match that of the minority class. The training files are randomly split into 30 branches and processed parallel by CHTC. Finally, the processed file is merged into one, generating two cleaned data sets, one is oversampled, and the other is undersampled.
+
+## Computation and Results
+
+We shuffled the data and split 80% of the data for training, and the rest 20% for prediction. Each data set is randomly split into four files of the same size and will be processed in parallel. They are used to examine four common prediction models:
+
+1.  Logistic regression
+
+The logistic regression estimates the coefficients in a linear combination, which is commonly used for prediction and classification.
+
+2.  Random Forest
+
+The random forest is a classification algorithm consisting of many decision trees. It takes each tree's majority vote for classification.
+
+3.  Support vector machines
+
+Support Vector Machine finds the hyperplane in an N-dimensional space that distinctly classifies the data points, it can be used for both classification and regression.
+
+4.  Naive Bayes classifier
+
+Naive Bayes assumes that each input variable is independent, which is one of the simple and most effective classification algorithms.
+
+The rate of accuracy, precision, and recall are calculated to compare the effectiveness. Accuracy is the number of bots clicking the model correctly predicts divided by the total number of predictions. Precision is the proportion of bot clicking among those predicted as fraud. The higher the accuracy and the precision, the fewer false judgment made by the model. The recall is the proportion of correctly predicted bots clicking. The higher the recall, the more frauds are detected by the model.
+
+As shown below, under both resampling methods, the Random Forest is the best among the four, with great comparative advantages in terms of accuracy, precision, and recall.
+
+![](https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/701670476291_.pic.jpg){width="550"}
+
+![](https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/661670476291_.pic.jpg){width="550"}
+
+## Discussion
+
+The project utilizes the potential of CHTC to handle large numbers of files in parallel, in the procession of both data cleaning and computation. It reduced the execution time and enhanced automation, thus improving efficiency.
+
+![Process of Operation](https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/681670476291_.pic.jpg){width="500"}
+
+However, there do exist limitations. The highly unbalanced data means that any models we run on the data will either need to be robust against class imbalance or require data resampling. In this project, we performed both oversampling and undersampling. Oversampling the minority class leads to overfitting; the model learns patterns that only exist in the sample that has been oversampled. On the other hand, undersampling leads to underfitting, the model fails to capture the general pattern.
+
+## Conclusion
+
+Random Forest is the best among the four models to predict whether a user will download an app after clicking a mobile app ad. Our project provided a reasonable basis for the advertising companies to develop a dynamic blacklist to prevent ad fraud. In this way, malicious bot activity can be filtered out, while real users are allowed to continue interacting.

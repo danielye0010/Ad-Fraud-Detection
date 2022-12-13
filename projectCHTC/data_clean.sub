@@ -1,0 +1,21 @@
+universe = vanilla
+log    =    log/myscript-chtc_$(Cluster)_$(Process).log
+error  =  error/myscript-chtc_$(Cluster)_$(Process).err
+output = output/myscript-chtc_$(Cluster)_$(Process).out
+
+
+executable = ./data_clean.sh
+arguments = $(file)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/R402.tar.gz, data_clean.R, data_clean.sh, $(file)
+
+request_cpus = 1
+request_memory = 5GB
+request_disk = 5GB
+
+queue file matching files from /home/groups/STAT_DSCP/group3/split_train/*.csv
+
+

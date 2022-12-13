@@ -1,0 +1,39 @@
+000 (240637.000.000) 2022-12-12 18:28:55 Job submitted from host: <128.104.100.148:9618?addrs=128.104.100.148-9618+[2607-f388-107c-501-216-3eff-feb2-bc11]-9618&alias=learn.chtc.wisc.edu&noUDP&sock=schedd_6018_6d09>
+...
+040 (240637.000.000) 2022-12-12 18:29:21 Started transferring input files
+	Transferring to host: <128.105.244.120:9618?addrs=128.105.244.120-9618&alias=build3000.chtc.wisc.edu&noUDP&sock=slot1_1_17599_d665_85627>
+...
+040 (240637.000.000) 2022-12-12 18:30:06 Finished transferring input files
+...
+001 (240637.000.000) 2022-12-12 18:30:07 Job executing on host: <128.105.244.120:9618?addrs=128.105.244.120-9618&alias=build3000.chtc.wisc.edu&noUDP&sock=startd_7843_3960>
+...
+006 (240637.000.000) 2022-12-12 18:30:15 Image size of job updated: 259944
+	249  -  MemoryUsage of job (MB)
+	254296  -  ResidentSetSize of job (KB)
+...
+006 (240637.000.000) 2022-12-12 18:35:15 Image size of job updated: 18105760
+	17425  -  MemoryUsage of job (MB)
+	17842408  -  ResidentSetSize of job (KB)
+...
+040 (240637.000.000) 2022-12-12 18:35:34 Started transferring output files
+...
+040 (240637.000.000) 2022-12-12 18:35:34 Finished transferring output files
+...
+005 (240637.000.000) 2022-12-12 18:35:34 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:05:08, Sys 0 00:00:19  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:05:08, Sys 0 00:00:19  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2352  -  Run Bytes Sent By Job
+	1634229248  -  Run Bytes Received By Job
+	2352  -  Total Bytes Sent By Job
+	1634229248  -  Total Bytes Received By Job
+	Partitionable Resources :      Usage  Request Allocated 
+	   Cpus                 :       1.00        1         1 
+	   Disk (KB)            : 1933695    20971520  21753214 
+	   IoHeavy              :                             0 
+	   Memory (MB)          :   17425       20480     20480 
+
+	Job terminated of its own accord at 2022-12-13T00:35:34Z with exit-code 0.
+...

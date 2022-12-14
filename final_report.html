@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Group3 - Daniel Ye, David Gao, Wanxin Tu, Yujie Zhao, Zihan Tang">
+
+<title>Ad Fraud Detection: A Model Comparison Perspective</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="final_report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="final_report_files/libs/quarto-html/quarto.js"></script>
+<script src="final_report_files/libs/quarto-html/popper.min.js"></script>
+<script src="final_report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="final_report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="final_report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="final_report_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="final_report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="final_report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="final_report_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ad Fraud Detection: A Model Comparison Perspective</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Group3 - Daniel Ye, David Gao, Wanxin Tu, Yujie Zhao, Zihan Tang </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Github repositoryo&lt;:https://github.com/amandazhao2022/STAT605_Project Kaggle data overview&lt;:https://www.kaggle.com/competitions/talkingdata-adtracking-fraud-detection/overview</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>To analyze today’s online Ad fraud we used four models to predict whether a download of the app was made by a click, or the download request was sent by a malicious device. To analyze the data we first split the original file into 30 pieces, and then utilize the CHTC to run 30 parallel jobs to extract our training data by using the over sampling method. After we get the extractions, we merge them together as our training data, and then using CHTC to run models: logistics regression, Naive Bayes, support vector machine and random forest.</p>
+</section>
+<section id="data-overview" class="level2">
+<h2 class="anchored" data-anchor-id="data-overview">Data Overview</h2>
+<p>We used 6 variables to build our models:</p>
+<ul>
+<li><p>IP: IP address of click</p></li>
+<li><p>app: app id for marketing</p></li>
+<li><p>device:id of user mobile phone (e.g., iPhone, Samsung, etc.)</p></li>
+<li><p>os: operating system version id of user mobile phone</p></li>
+<li><p>channel: channel id of mobile ad publisher</p></li>
+<li><p>is_attributed: the target that is to be predicted, indicating the app was downloaded</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/691670476291_.pic.jpg" class="img-fluid figure-img" width="550"></p>
+<p></p><figcaption class="figure-caption">Sample Data</figcaption><p></p>
+</figure>
+</div>
+<p>In a preliminary look at the data, we found the binary variable “is_attribute” has a skewed class proportion. As shown below, only a small proportion (less than 0.2%) of clicks were followed by a download, which indicates an imbalanced feature.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/671670476291_.pic.jpg" class="img-fluid figure-img" width="550"></p>
+<p></p><figcaption class="figure-caption">Imbalanced Class</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="data-preprocessing">Data Preprocessing</h2>
+<p>To solve the imbalance feature, we first compared difference between oversampling and undersampling on the whole training file. For oversampling randomly, we duplicates observations from the minority class (value 1), set the number of minority to match that of the majority class (value 0); while for undersampling, we randomly removing observations from the majority and setting the number of samples to match that of the minority class. Finally, the processed file is merged into one, generating two cleaned data sets, one is oversampled, and the other is undersampled.</p>
+</section>
+<section id="computation-and-results" class="level2">
+<h2 class="anchored" data-anchor-id="computation-and-results">Computation and Results</h2>
+<p>We shuffled the data and split 80% of the data for training, the rest 20% for prediction. Each data set is randomly split into four files of the same size and will be processed in parallel. They are used to examine four common prediction models:</p>
+<ol type="1">
+<li>Logistic regression</li>
+</ol>
+<p>The logistic regression estimates the coefficients in a linear combination, which is commonly used for prediction and classification.</p>
+<ol start="2" type="1">
+<li>Random Forest</li>
+</ol>
+<p>The random forest is a classification algorithm consisting of many decision trees. It takes each tree’s majority vote for classification.</p>
+<ol start="3" type="1">
+<li>Support vector machines</li>
+</ol>
+<p>Support Vector Machine finds the hyperplane in an N-dimensional space that distinctly classifies the data points, it can be used for both classification and regression.</p>
+<ol start="4" type="1">
+<li>Naive Bayes classifier</li>
+</ol>
+<p>Naive Bayes assumes that each input variable is independent, which is one of the simple and most effective classification algorithms.</p>
+<p>The rate of accuracy, precision, and recall are calculated to compare the effectiveness. Accuracy is the number of bots clicking the model correctly predicts divided by the total number of predictions. Precision is the proportion of bot clicking among those predicted as fraud. The higher the accuracy and the precision, the fewer false judgment made by the model. The recall is the proportion of correctly predicted bots clicking. The higher the recall, the more frauds are detected by the model.</p>
+<p>As shown below, under both resampling methods, the Random Forest is the best among the four, with great comparative advantages in terms of accuracy, precision, and recall.</p>
+<p><img src="https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/701670476291_.pic.jpg" class="img-fluid" width="550"></p>
+<p><img src="https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/661670476291_.pic.jpg" class="img-fluid" width="550"></p>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>The project utilizes the potential of CHTC to handle large numbers of files in parallel, in the procession of both data cleaning and computation. It reduced the execution time and enhanced automation, thus improving efficiency.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/amandazhao2022/STAT605_Project/main/681670476291_.pic.jpg" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Process of Operation</figcaption><p></p>
+</figure>
+</div>
+<p>However, there do exist limitations. The highly unbalanced data means that any models we run on the data will either need to be robust against class imbalance or require data resampling. In this project, we performed both oversampling and undersampling. Oversampling the minority class leads to overfitting; the model learns patterns that only exist in the sample that has been oversampled. On the other hand, undersampling leads to underfitting, the model fails to capture the general pattern. Indeed, we decided to use oversampling as our primary data processing method as it will not lose information of the majority of the class.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Random Forest is the best among the four models to predict whether a user will download an app after clicking a mobile app ad. Our project provided a reasonable basis for the advertising companies to develop a dynamic blacklist to prevent ad fraud. In this way, malicious bot activity can be filtered out, while real users are allowed to continue interacting.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

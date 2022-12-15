@@ -1,0 +1,21 @@
+universe = vanilla
+log    =    log/myscript-chtc_$(Cluster)_$(Process).log
+error  =  error/myscript-chtc_$(Cluster)_$(Process).err
+output = output/myscript-chtc_$(Cluster)_$(Process).out
+
+
+executable = ./models.sh
+arguments = $(file) merge_clean.csv test_set.csv
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+transfer_input_files = /home/groups/STAT_DSCP/group3/test_set.csv,packages.tar.gz,http://proxy.chtc.wisc.edu/SQUID/chtc/R412.tar.gz, $(file), models.sh, merge_clean.csv
+
++IsBuildJob = true
+request_cpus = 2
+request_memory = 20GB
+request_disk = 20GB
+
+queue file matching files from /home/groups/STAT_DSCP/group3/projectCHTC/models/*.R
+

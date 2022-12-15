@@ -1,0 +1,21 @@
+# (pre 1)  split.sh
+#              |
+# (job 1)  data_clean.sub
+#            / | \
+#  30 parallel runs of data_clean.sh
+#            \ | /
+# (post 1) merge_clean.sh
+#              |
+# (job 2)  models.sub
+#            / | \
+#  4 parallel runs of models(logistic.sh, randomForest.sh, svm.sh, naivebayes.sh)
+#            \ | /
+# (post 2) merge_results.sh
+
+job 1 data_clean.sub
+job 2 models.sub
+
+script post 1 merge_cleandata_all.sh
+script post 2 model_results.sh
+
+parent 1 child 2

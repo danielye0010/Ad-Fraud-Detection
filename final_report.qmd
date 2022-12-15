@@ -76,3 +76,13 @@ However, there do exist limitations. The highly unbalanced data means that any m
 ## Conclusion
 
 Random Forest is the best among the four models to predict whether a user will download an app after clicking a mobile app ad. Our project provided a reasonable basis for the advertising companies to develop a dynamic blacklist to prevent ad fraud. In this way, malicious bot activity can be filtered out, while real users are allowed to continue interacting.
+
+#### Contributions
+
+| Member     | Proposal | Coding | Presentation | Report |
+|------------|----------|--------|--------------|--------|
+| Daniel Ye  |    1    |    0.5   |     1       |   1     |
+| David Gao  |    0.5     |   1    |    1         | 1      |
+| Wanxin Tu  |    1     |     1   |     1         | 0.5       |
+| Yujie Zhao |    1     |    1  |        1    |    1  |
+| Zihan Tang |    1     |   0.4     |       1       |    1    |

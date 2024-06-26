@@ -1,5 +1,3 @@
-# STAT605_Project
-
 Group members: Daniel Ye, David Gao, Wanxin Tu, Yujie Zhao, Zihan Tang
 
 ### Git Clone Instruction

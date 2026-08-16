@@ -1,0 +1,15 @@
+.DS_Store
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# HTCondor runtime output
+*.log
+*.out
+*.err
+*.dagman.*
+
+# Generated intermediate data
+projectCHTC/cleanData_*.csv
+projectCHTC/result_*.txt
